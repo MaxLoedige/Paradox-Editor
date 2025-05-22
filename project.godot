@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Paradox-Editor"
+run/main_scene="uid://dgad3usedvcec"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 
