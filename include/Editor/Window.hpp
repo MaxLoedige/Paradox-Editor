@@ -13,7 +13,7 @@ public:
     Window();
     ~Window();
 
-    void start()
+    void start();
 
 private:
 

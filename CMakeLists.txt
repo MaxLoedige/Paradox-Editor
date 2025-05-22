@@ -4,7 +4,8 @@ project(Paradox-Editor)
 # Edit this as required by your build or change FLTK_COMMIT in the
 # CMake cache (e.g. with cmake-gui)
 
-# set (FLTK_COMMIT "branch-1.3" CACHE STRING "FLTK branch name, tag, or commit")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED On)
 
 include(FetchContent)
 
@@ -19,10 +20,21 @@ FetchContent_Declare(FLTK
 
 FetchContent_MakeAvailable(FLTK)
 
-add_executable(Paradox-Editor WIN32 MACOSX_BUNDLE 
-    ${CMAKE_SOURCE_DIR}/src/Editor/Window.cpp
-    ${CMAKE_SOURCE_DIR}/src/Editor/TextEditor.cpp    
-    ${CMAKE_SOURCE_DIR}/src/main.cpp
+    # ${CMAKE_SOURCE_DIR}/src/Editor/Window.cpp
+    # ${CMAKE_SOURCE_DIR}/src/Editor/TextEditor.cpp    
+    # ${CMAKE_SOURCE_DIR}/src/main.cpp
+
+file(GLOB SRC
+    ${PROJECT_SOURCE_DIR}/src/Common/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/Editor/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/Lexer/*.cpp
+)
+
+message("SOURCES ${SRC}")
+
+
+add_executable(Paradox-Editor ${PROJECT_SOURCE_DIR}/src/main.cpp
+    ${SRC}
 )
 
 target_include_directories(Paradox-Editor PRIVATE 
